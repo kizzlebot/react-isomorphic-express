@@ -43,6 +43,25 @@
 	},
 	"buffers":
 	[
+<<<<<<< HEAD
+=======
+		{
+			"file": "src/app.js",
+			"settings":
+			{
+				"buffer_size": 5404,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 2307,
+				"line_ending": "Unix"
+			}
+		}
+>>>>>>> bkp
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -51,6 +70,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
+<<<<<<< HEAD
 		"height": 375.0,
 		"last_filter": "book",
 		"selected_items":
@@ -60,6 +80,13 @@
 				"Bookmarks: Toggle"
 			],
 			[
+=======
+		"height": 159.0,
+		"last_filter": "pretty",
+		"selected_items":
+		[
+			[
+>>>>>>> bkp
 				"pretty",
 				"HTMLPrettify"
 			],
@@ -146,6 +173,7 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+<<<<<<< HEAD
 	"file_history":
 	[
 		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/package.json",
@@ -158,6 +186,22 @@
 		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/dist/0.031f06b90c8c0e85dd56.hot-update.js",
 		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/gameserve.sublime-project",
 		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/components/Avatar.js",
+=======
+	"expanded_folders":
+	[
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/components"
+	],
+	"file_history":
+	[
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/components/Avatar.js",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/package.json",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/configs/middleware.js",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/gameserve.sublime-project",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/server.js",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/containers/Main.js",
+>>>>>>> bkp
 		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/containers/routes.js",
 		"/Users/kizzlebot/Documents/node_gameserve/webpack.config.js",
 		"/Users/kizzlebot/Documents/node_gameserve/utils/staticMarkup.js",
@@ -261,7 +305,11 @@
 	],
 	"find":
 	{
+<<<<<<< HEAD
 		"height": 22.0
+=======
+		"height": 37.0
+>>>>>>> bkp
 	},
 	"find_in_files":
 	{
@@ -276,12 +324,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< HEAD
 			"callback",
 			"console.log",
 			"hostname",
 			"window",
 			"callback",
 			"static",
+=======
+>>>>>>> bkp
 			"isomo",
 			"insertCss",
 			"favicon",
@@ -399,8 +450,79 @@
 	"groups":
 	[
 		{
+<<<<<<< HEAD
 			"sheets":
 			[
+=======
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5404,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3589,
+								3591
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "javascript (babel)",
+							"buffer_scroll_name": "c66214cf",
+							"spell_check": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1466.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "json",
+							"buffer_scroll_name": "52bf19af",
+							"spell_check": false,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 15.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+>>>>>>> bkp
 			]
 		}
 	],

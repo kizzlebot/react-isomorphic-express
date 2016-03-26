@@ -52,7 +52,7 @@ module.exports = (app, dirname, cb) => {
     outputStyle: 'expanded'
   }));
   app.use(logger('dev'));
-  app.use(favicon(path.join(dirname, 'public', 'favicon.png')));
+  //app.use(favicon(path.join(dirname, 'public', 'favicon.png')));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(expressValidator());
@@ -85,7 +85,7 @@ module.exports = (app, dirname, cb) => {
   });
 
 
-  app.use(express.static(path.join(dirname, 'public'), { maxAge: 31557600000 }));
+  app.use(express.static(path.resolve(dirname, '../dist'), { maxAge: 31557600000 }));
 
 
   if (cb) cb(app);
