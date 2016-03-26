@@ -1,130 +1,138 @@
 import babelPolyfill from "babel-polyfill";
-import React from "react";
-import ReactDOM from "react-dom/server";
 import * as ReactRouter from "react-router";
-import Transmit from "react-transmit";
-
-import githubApi from "apis/github";
-import routesContainer from "containers/routes";
-import favicon from "favicon.ico";
 
 
 
-
-
-
-var express = require('express');
-var errorHandler = require('errorhandler');
+var pkg = require('../package.json');
 var dotenv = require('dotenv');
-var logger = require('morgan');
-var path = require('path');
+var express = require('express');
+var mongoose = require('mongoose')
+var hostname = process.env.HOSTNAME || "localhost" ;
+var port     = process.env.PORT || 8000;
+
+var errorHandler = require('errorhandler');
+var React =  require("react");
+var ReactDOM = require("react-dom/server");
+var Transmit = require("react-transmit");
+
+var githubApi = require("apis/github");
+var routes = require("containers/routes");
+var favicon = require("favicon.ico");
+
+var passportConfig = require('../configs/passport');
+
+
+
+
+
+
+
+
+/* Load environment variables from .env file, where API keys and passwords are configured. */
+dotenv.load();
+
+
+/* API keys and Passport configuration. */
+
+/* Create Express server. */
+var app = express();
+
+/* Connect to MongoDB. */
+mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
+mongoose.connection.on('error', function() {
+  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  process.exit(1);
+});
+
+
+
+
+
+
+
+
+
+
+var middlewareConfig = require('../configs/middleware.js');
 var proxy = require('express-http-proxy');
 
 
-
-dotenv.load({ path: '.env.example' });
-
-
-
-var passportConf = require('../configs/passport');
-const port     = process.env.PORT || 8000;
-
-
-
-
-
-var app = express();
-const hostname = process.env.HOSTNAME || "localhost";
-let   routes   = routesContainer;
-
-var middlewareConfig = require('../configs/middleware');
 middlewareConfig(app, __dirname, () => {
-
-
 	app.use('/api/github', proxy(githubApi.url, {
 	  forwardPath: (req, res) => require('url').parse(req.url).path
 	}));
 
 
+  /**
+   * Controllers (route handlers).
+   */
 
-	app.use('*', function(req, res, next){
+	app.get('/', function(req, res, next){
+			var webserver = __PRODUCTION__ ? "" : `//${hostname}:8080`;
+			var location  = req.originalUrl;
 
-		const webserver = __PRODUCTION__ ? "" : `//${hostname}:8080`;
-		const location  = req.originalUrl;
+			ReactRouter.match({routes, location}, (error, redirectLocation, renderProps) => {
+				if (redirectLocation) return res.redirect(redirectLocation.pathname + redirectLocation.search, "/");
+				if (error || !renderProps) return next(error);
 
-		ReactRouter.match({routes, location}, (error, redirectLocation, renderProps) => {
-			if (redirectLocation) {
-				res.redirect(redirectLocation.pathname + redirectLocation.search, "/");
-				return;
-			}
 
-			if (error || !renderProps) {
-				next(error);
-				return;
-			}
+				Transmit.renderToString(ReactRouter.RouterContext, renderProps).then(	({reactString, reactData}) => {
+					var template = (
+						`<!doctype html>
+						 <html lang="en-us">
+							<head>
+								<meta charset="utf-8" />
+								<title>react-isomorphic-starterkit</title>
+								<link rel="shortcut icon" href="${favicon}" />
+							</head>
+							<body>
+								<div id="react-root">${reactString}</div>
+							</body>
+						 </html>`
+					);
 
-			const styles = {};
 
-			const StyleProvider = React.createClass({
-				childContextTypes:{
-					styles:    React.PropTypes.object,
-					insertCss: React.PropTypes.func
-				},
 
-				getChildContext () {
-					return {
-						styles,
-						insertCss (style) { styles[style] = style._getCss(); }
-					};
-				},
+					var body = Transmit.injectIntoMarkup(template, reactData, [`${webserver}/dist/client.js`]);
 
-				render () {
-					return <ReactRouter.RouterContext {...this.props} />;
-				}
+					// Set content-type to HTML and send the prerendered HTML back
+					res.set('Content-Type', 'text/html');
+					res.end(body);
+
+				})
+				.catch(e => {
+					next(e);
+				});
 			});
-
-
-			Transmit.renderToString(StyleProvider, renderProps).then(({reactString, reactData}) => {
-				let cssModules = "";
-
-				Object.keys(styles).forEach((style) => { cssModules += styles[style]; });
-
-				let template = (
-					`<!doctype html>
-					<html lang="en-us">
-						<head>
-							<meta charset="utf-8" />
-							<title>react-isomorphic-starterkit</title>
-							<link rel="shortcut icon" href="${favicon}" />
-							<style>${cssModules}</style>
-						</head>
-						<body>
-							<div id="react-root">${reactString}</div>
-						</body>
-					</html>`
-				);
-
-
-				var content = Transmit.injectIntoMarkup(template, reactData, [`${webserver}/dist/client.js`]);
-
-
-				res.setHeader('Content-Type', 'text/html')
-				res.end(content);
-			}).catch(e => {
-				next(e);
-			});
-		});
-	})
-
-  app.use(errorHandler());
-
-
-
-
-	app.listen(app.get('port'), () => {
-		console.info("==> ✅  Server is listening");
-		console.info("==> 🌎  Go to http://localhost:%s", app.get('port'));
 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * Error Handler.
+	 */
+	app.use(errorHandler());
+
+	/**
+	 * Start Express server.
+	 */
+	app.listen(app.get('port'), function() {
+	  console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
+	});
+
 
 
 
@@ -143,10 +151,9 @@ middlewareConfig(app, __dirname, () => {
 			});
 		}
 	}
-
 });
 
 
 
 
-
+module.exports = app;
