@@ -5,13 +5,15 @@ import plusBearerauth from "fetch-plus-bearerauth";
 
 const githubServerUrl = () => {
 	if (__SERVER__) {
+		console.log("https://api.github.com");
 		return "https://api.github.com";
 	}
 
 	if (__CLIENT__) {
 		const {protocol, hostname, port} = window.location;
-
-		return `${protocol}//${hostname}:${port}/api/github`;
+		var rtn = `${protocol}//${hostname}:${port}/api/github`;
+		console.log(rtn);
+		return rtn ;
 	}
 };
 

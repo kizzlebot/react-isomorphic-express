@@ -1,0 +1,719 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"component",
+				"Component"
+			],
+			[
+				"react",
+				"reactDOM"
+			],
+			[
+				"oath",
+				"OAuthSetup"
+			],
+			[
+				"LOG",
+				"LOG_IN"
+			],
+			[
+				"LOG_",
+				"LOG_OUT"
+			],
+			[
+				"Gi",
+				"GithubAPI"
+			],
+			[
+				"sess",
+				"sessionUrl"
+			],
+			[
+				"LASTFM",
+				"LASTFM_KEY"
+			],
+			[
+				"a",
+				"AwesomeProj"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/app.js",
+			"settings":
+			{
+				"buffer_size": 5404,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 2307,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 159.0,
+		"last_filter": "pretty",
+		"selected_items":
+		[
+			[
+				"pretty",
+				"HTMLPrettify"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"eslint",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"p",
+				"Project: Edit"
+			],
+			[
+				"less",
+				"Set Syntax: LESS"
+			],
+			[
+				"scss",
+				"Set Syntax: SCSS"
+			],
+			[
+				"choose lint",
+				"SublimeLinter: Choose Lint Mode"
+			],
+			[
+				"sublimelinter user",
+				"Preferences: SublimeLinter Settings – User"
+			],
+			[
+				"linter",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"insta",
+				"Preferences: SublimeLinter Settings – Default"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"jsfm",
+				"JSFMT: Format the current file"
+			],
+			[
+				"js",
+				"JSFMT: Format the current file"
+			],
+			[
+				"jsf",
+				"JSFMT: Format the current file"
+			]
+		],
+		"width": 507.0
+	},
+	"console":
+	{
+		"height": 297.0,
+		"history":
+		[
+			"set_timeout",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"set_timeout",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/components"
+	],
+	"file_history":
+	[
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/components/Avatar.js",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/package.json",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/configs/middleware.js",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/gameserve.sublime-project",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/server.js",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/containers/Main.js",
+		"/Users/kizzlebot/Desktop/react-isomorphic-starterkit/src/containers/routes.js",
+		"/Users/kizzlebot/Documents/node_gameserve/webpack.config.js",
+		"/Users/kizzlebot/Documents/node_gameserve/utils/staticMarkup.js",
+		"/Users/kizzlebot/Documents/node_gameserve/config/middleware.js",
+		"/Users/kizzlebot/Documents/node_gameserve/routes/index.js",
+		"/Users/kizzlebot/Documents/node_gameserve/public/client.js",
+		"/Users/kizzlebot/Documents/node_gameserve/package.json",
+		"/Users/kizzlebot/Documents/node_gameserve/config/webpack.js",
+		"/Users/kizzlebot/Documents/node_gameserve/public/extra.js",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/kizzlebot/Documents/node_gameserve/public/index.js",
+		"/Users/kizzlebot/Documents/node_gameserve/views/layout.js",
+		"/Users/kizzlebot/Documents/node_gameserve/views/layout.jsx",
+		"/Users/kizzlebot/Documents/node_gameserve/views/index.js",
+		"/Users/kizzlebot/Documents/node_gameserve/views/layout.jade",
+		"/Users/kizzlebot/Documents/node_gameserve/config/passport.js",
+		"/Users/kizzlebot/Documents/node_gameserve/config/strategies/oauth2.js",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/kizzlebot/Documents/devmusic/config/middleware.js",
+		"/Users/kizzlebot/Documents/devmusic/src/routes.js",
+		"/Users/kizzlebot/Documents/devmusic/package.json",
+		"/Users/kizzlebot/Documents/codeforFTL/builder.js",
+		"/Users/kizzlebot/Documents/devmusic/src/index.js",
+		"/Users/kizzlebot/Documents/devmusic/app.js",
+		"/Users/kizzlebot/Documents/devmusic/controllers/home.js",
+		"/Users/kizzlebot/Documents/devmusic/webpack.config.dev.js",
+		"/Users/kizzlebot/Documents/devmusic/controllers/react_route.js",
+		"/Users/kizzlebot/Documents/devmusic/webpack.config.prod.js",
+		"/Users/kizzlebot/Documents/devmusic/controllers/user.js",
+		"/Users/kizzlebot/Documents/devmusic/config/passport.js",
+		"/Users/kizzlebot/Documents/devmusic/models/User.js",
+		"/Users/kizzlebot/Documents/devmusic/npm-debug.log",
+		"/Users/kizzlebot/Documents/devmusic/src/redux/userStore.js",
+		"/Users/kizzlebot/Documents/devmusic/src/style/css/main.scss",
+		"/Users/kizzlebot/Documents/devmusic/src/style/css/themes/flatly/_variables.scss",
+		"/Users/kizzlebot/Documents/devmusic/src/CheckboxWithLabel.js",
+		"/Users/kizzlebot/Documents/devmusic/src/style/css/themes/default/_default.scss",
+		"/Users/kizzlebot/Documents/devmusic/src/__tests__/userStore-test.js",
+		"/Users/kizzlebot/Documents/devmusic/src/partials/header.js",
+		"/Users/kizzlebot/Documents/devmusic/src/routes/home.js",
+		"/Users/kizzlebot/Documents/devmusic/src/routes/login.js",
+		"/Users/kizzlebot/Documents/devmusic/src/routes/signup.js",
+		"/Users/kizzlebot/Documents/devmusic/src/redux/actionTypes.js",
+		"/Users/kizzlebot/Documents/devmusic/src/routes/apis.js",
+		"/Users/kizzlebot/Documents/kizzlebot.github.io/resume.json",
+		"/Users/kizzlebot/Documents/devmusic/views/layout.jade",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/kizzlebot/Documents/devmusic/src/style/css/lib/bootstrap/_input-groups.scss",
+		"/Users/kizzlebot/Documents/devmusic/devmusic.sublime-project",
+		"/Users/kizzlebot/Documents/devmusic/src/routes/apis/linkedin.js",
+		"/Users/kizzlebot/Documents/devmusic/controllers/api.js",
+		"/Users/kizzlebot/Documents/devmusic/src/routes/apis/github.js",
+		"/Users/kizzlebot/Documents/devmusic/views/api/aviary.jade",
+		"/Users/kizzlebot/Documents/devmusic/views/api/linkedin.jade",
+		"/Users/kizzlebot/Documents/devmusic/Procfile",
+		"/Users/kizzlebot/Documents/devmusic/views/api/github.jade",
+		"/Users/kizzlebot/Documents/devmusic/views/api/index.jade",
+		"/Users/kizzlebot/Documents/devmusic/src/components/signup.js",
+		"/Users/kizzlebot/Documents/devmusic/views/account/signup.jade",
+		"/Users/kizzlebot/Documents/devmusic/src/components/apis.js",
+		"/Users/kizzlebot/Documents/devmusic/src/components/login.js",
+		"/Users/kizzlebot/Documents/devmusic/views/account/login.jade",
+		"/Users/kizzlebot/Documents/devmusic/src/style/css/lib/bootstrap/_variables.scss",
+		"/Users/kizzlebot/Documents/devmusic/src/style/css/themes/default/_variables.less",
+		"/Users/kizzlebot/Documents/devmusic/public/css/lib/bootstrap/_variables.scss",
+		"/Users/kizzlebot/Documents/devmusic/src/style/css/themes/default/_variables.scss",
+		"/Users/kizzlebot/Documents/devmusic/public/css/main.scss",
+		"/Users/kizzlebot/Documents/devmusic/src/style/main.css",
+		"/Users/kizzlebot/Documents/devmusic/src/style",
+		"/Users/kizzlebot/Documents/devmusic/src/components/contact.js",
+		"/Users/kizzlebot/Documents/devmusic/src/components/Home.js",
+		"/Users/kizzlebot/Documents/devmusic/views/contact.jade",
+		"/Users/kizzlebot/Documents/devmusic/views/home.jade",
+		"/Users/kizzlebot/Documents/devmusic/src/footer.js",
+		"/Users/kizzlebot/Documents/devmusic/src/header.js",
+		"/Users/kizzlebot/Documents/devmusic/views/partials/footer.jade",
+		"/Users/kizzlebot/Documents/devmusic/.eslintrc",
+		"/Users/kizzlebot/Documents/devmusic/.babelrc",
+		"/Users/kizzlebot/Documents/devmusic/public/js/header.js",
+		"/Users/kizzlebot/Documents/devmusic/public/js/index.js",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Users/kizzlebot/Documents/devmusic/public/js/login.js",
+		"/Users/kizzlebot/Documents/devmusic/views/account/profile.jade",
+		"/Users/kizzlebot/Documents/devmusic/views/partials/header.jade",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/BufferScroll/BufferScroll.sublime-settings",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/User/BufferScroll.sublime-settings",
+		"/Users/kizzlebot/Documents/devmusic/.env.example",
+		"/Users/kizzlebot/Downloads/demo/jquery.tzineClock/jquery.tzineClock.css",
+		"/Users/kizzlebot/Documents/awesomeproj/index.ios.js",
+		"/Users/kizzlebot/Documents/react-starter-kit/node_modules/browser-sync/lib/utils.js",
+		"/Users/kizzlebot/Documents/awesomeproj/src/App.js",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/User/jsfmt.sublime-settings",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/Babel/Babel.sublime-settings",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/User/Babel.sublime-settings",
+		"/Users/kizzlebot/Library/Application Support/Sublime Text 3/Packages/jsfmt/jsfmt.sublime-settings",
+		"/Users/kizzlebot/Documents/awesomeproj/node_modules/react/lib/traverseAllChildren.js",
+		"/Users/kizzlebot/Documents/awesomeproj/node_modules/react/lib/ReactCompositeComponent.js",
+		"/Users/kizzlebot/Documents/awesomeproj/index.android.js",
+		"/Users/kizzlebot/Documents/awesomeproj/.flowconfig"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 95.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"isomo",
+			"insertCss",
+			"favicon",
+			"req",
+			"-loader",
+			".",
+			"  \n",
+			"session",
+			"passportConf",
+			"__dirname",
+			"browser",
+			"import",
+			"pkg",
+			"__dirname",
+			"var ",
+			"cookiePars",
+			"-loader",
+			"{}",
+			"function(req, res) {",
+			"}), function(req, res)",
+			"getOa",
+			"lusca",
+			"session",
+			"font",
+			"icon-",
+			"fonts",
+			"../",
+			"passportConfig",
+			"eslint",
+			"postLogin",
+			"object",
+			"getGithub",
+			"github",
+			"components/home",
+			"components",
+			"$line-height-computed",
+			"$line-height",
+			"if(",
+			"if",
+			"$",
+			"$b",
+			"$",
+			"icon-font-path",
+			"Btn-social",
+			"style-loader",
+			"appName",
+			"req",
+			"a",
+			"src=",
+			"src=\"",
+			"={{",
+			"{backgroundColor:",
+			"Lob",
+			"log",
+			"{}",
+			",",
+			"{backgroundColor",
+			",",
+			"{40} />",
+			",",
+			"href",
+			"-loader",
+			"file-loader",
+			"public",
+			"env",
+			"register",
+			"#signup",
+			"header.js",
+			"/account/signup",
+			"/account",
+			"Register",
+			"signup",
+			"<a",
+			"<div",
+			"{% block ",
+			"/api/face",
+			"passport",
+			"development",
+			"local",
+			"account",
+			"text-danger(",
+			"profile",
+			"sig",
+			"getLast",
+			"query",
+			"facebook",
+			"exports.",
+			"profile",
+			"lastfm",
+			"auth",
+			"lastfm",
+			"request",
+			"passportConfig",
+			"oath",
+			"lastfm",
+			"github",
+			"'"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\n  ",
+			"@",
+			"\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5404,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3589,
+								3591
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "javascript (babel)",
+							"buffer_scroll_name": "c66214cf",
+							"spell_check": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1466.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2307,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bs_sintax": "json",
+							"buffer_scroll_name": "52bf19af",
+							"spell_check": false,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 15.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 18.0
+	},
+	"input":
+	{
+		"height": 28.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 72.0
+	},
+	"pinned_build_system": "",
+	"project": "gameserve.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"routes",
+				"src/routes.js"
+			],
+			[
+				"home",
+				"controllers/home.js"
+			],
+			[
+				"index",
+				"src/index.js"
+			],
+			[
+				"prod",
+				"webpack.config.prod.js"
+			],
+			[
+				"user",
+				"controllers/user.js"
+			],
+			[
+				"app",
+				"app.js"
+			],
+			[
+				"style.s",
+				"src/style/css/main.scss"
+			],
+			[
+				"signup",
+				"src/routes/signup.js"
+			],
+			[
+				"login",
+				"src/routes/login.js"
+			],
+			[
+				"uses",
+				"src/redux/userStore.js"
+			],
+			[
+				"web",
+				"webpack.config.prod.js"
+			],
+			[
+				"webpack",
+				"webpack.config.dev.js"
+			],
+			[
+				"head",
+				"src/partials/header.js"
+			],
+			[
+				"app.js",
+				"app.js"
+			],
+			[
+				"header.js",
+				"src/partials/header.js"
+			],
+			[
+				"index.jad",
+				"views/api/index.jade"
+			],
+			[
+				"dev",
+				"webpack.config.dev.js"
+			],
+			[
+				"proc",
+				"Procfile"
+			],
+			[
+				"var",
+				"src/style/css/lib/bootstrap/_variables.scss"
+			],
+			[
+				"_variables",
+				"src/style/css/lib/bootstrap/_variables.scss"
+			],
+			[
+				"layout",
+				"views/layout.jade"
+			],
+			[
+				"webp",
+				"webpack.config.dev.js"
+			],
+			[
+				"less",
+				"src/style/css/themes/default/_variables.less"
+			],
+			[
+				"_vari",
+				"src/style/css/lib/bootstrap/_variables.scss"
+			],
+			[
+				"man.scss",
+				"src/style/css/main.scss"
+			],
+			[
+				"header",
+				"src/partials/header.js"
+			],
+			[
+				"home.jade",
+				"views/home.jade"
+			],
+			[
+				"index.js",
+				"src/index.js"
+			],
+			[
+				"index.jade",
+				"views/api/index.jade"
+			],
+			[
+				"src/",
+				"src/index.js"
+			],
+			[
+				"ine",
+				"src/index.js"
+			],
+			[
+				"lay",
+				"views/layout.jade"
+			],
+			[
+				"package",
+				"package.json"
+			],
+			[
+				"pro",
+				"views/account/profile.jade"
+			],
+			[
+				".env.",
+				".env.example"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Documents/node_gameserve/node_gameserve.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 194.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

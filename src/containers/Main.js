@@ -16,6 +16,10 @@ const fetchStargazers  = (page, per_page = 100) => {
 	});
 };
 
+
+
+
+
 /**
  * Main React application entry-point for both the server and client.
  */
