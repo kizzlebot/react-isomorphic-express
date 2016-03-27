@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import * as ReactRouter from "react-router";
 import Transmit from "react-transmit";
 
-import routesContainer from "containers/routes";
+import routesContainer from "components/routes";
 
 /**
  * Fire-up React Router.

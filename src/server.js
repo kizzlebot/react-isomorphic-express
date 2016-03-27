@@ -16,7 +16,7 @@ var ReactDOM = require("react-dom/server");
 var Transmit = require("react-transmit");
 
 var githubApi = require("apis/github");
-var routes = require("containers/routes");
+var routes = require("components/routes");
 var favicon = require("favicon.ico");
 
 var passportConfig = require('../configs/passport');

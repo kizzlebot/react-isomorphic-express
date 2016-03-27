@@ -3,8 +3,8 @@
   [
     {
       "path": ".",
-      "folder_exclude_patterns":["node_modules"],
-      "file_exclude_patterns":["Procfile", "LICENSE.*", ".gitignore", ".travis.yml", ".eslintrc", ".babelrc", "README.md", ".editorconfig"],
+      "folder_exclude_patterns":["node_modules", "dist", "static"],
+      "file_exclude_patterns":["Procfile", "LICENSE.*", ".gitignore", ".travis.yml", ".eslintrc", ".babelrc", "README.md", ".editorconfig", ".env.example"],
     }
   ],
   "file_exclude_patterns": []
