@@ -2,8 +2,9 @@
 
 if (__CLIENT__) {
   require("font-awesome-webpack");
-  require("bootstrap-webpack");
+  // require("bootstrap-webpack");
   require('./style/css/main.scss');
+  // require('./style/css/docs.scss');
 }
 
 
@@ -31,25 +32,8 @@ import Login from './routes/login';
 import SignUp from './routes/signup';
 
 
-
-
-
-
-var App = React.createClass({
-  render(){
-    return (
-      <div>
-        <Header ref={'header'} />
-        <div className={'container'}>
-         {React.cloneElement(this.props.children, {
-           key: this.props.location.pathname
-         })}
-        </div>
-        <Footer/>
-      </div>
-    );
-  }
-});
+import {PageHeader} from 'react-bootstrap';
+import App from './app.js';
 
 
 

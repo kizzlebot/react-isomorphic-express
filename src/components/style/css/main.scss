@@ -1,9 +1,7 @@
 @import "themes/modern/variables";
-
 @import "lib/bootstrap/bootstrap";
 @import "lib/bootstrap-social";
 @import "lib/font-awesome/font-awesome";
-
 @import "themes/modern/modern";
 
 // Scaffolding
@@ -79,4 +77,8 @@ textarea {
 
 .fa {
   margin-right: 6px;
+}
+.avatar {
+  width:50px;
+  height:50px;
 }

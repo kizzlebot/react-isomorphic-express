@@ -2,6 +2,10 @@ import React from 'react'
 var $ = require('jquery');
 import {submitLogin, userStore} from '../redux/userStore';
 
+
+
+
+
 var Login = React.createClass({
   contextTypes: {
     router: React.PropTypes.object.isRequired
@@ -53,7 +57,12 @@ var Login = React.createClass({
             </div>
           </div>
           <div className="form-group">
-            <div className="col-sm-offset-3 col-sm-7"><a href="/auth/facebook" className="btn btn-block btn-facebook btn-social"><i className="fa fa-facebook" />Sign in with Facebook</a><a href="/auth/twitter" className="btn btn-block btn-twitter btn-social"><i className="fa fa-twitter" />Sign in with Twitter</a><a href="/auth/google" className="btn btn-block btn-google btn-social"><i className="fa fa-google-plus" />Sign in with Google</a><a href="/auth/github" className="btn btn-block btn-github btn-social"><i className="fa fa-github" />Sign in with GitHub</a><a href="/auth/linkedin" className="btn btn-block btn-linkedin btn-social"><i className="fa fa-linkedin" />Sign in with LinkedIn</a><a href="/auth/instagram" className="btn btn-block btn-instagram btn-social"><i className="fa fa-instagram" />Sign in with Instagram</a></div>
+            <div className="col-sm-offset-3 col-sm-7">
+            <a href="/auth/lastfm" className="btn btn-block btn-lastfm btn-social"><i className="fa fa-lastfm" />Sign in with Last.fm</a>
+            <a href="/auth/facebook" className="btn btn-block btn-facebook btn-social"><i className="fa fa-facebook" />Sign in with Facebook</a>
+            <a href="/auth/google" className="btn btn-block btn-google btn-social"><i className="fa fa-google-plus" />Sign in with Google</a>
+            <a href="/auth/github" className="btn btn-block btn-github btn-social"><i className="fa fa-github" />Sign in with GitHub</a>
+            <a href="/auth/instagram" className="btn btn-block btn-instagram btn-social"><i className="fa fa-instagram" />Sign in with Instagram</a></div>
           </div>
         </form>
       </div>
