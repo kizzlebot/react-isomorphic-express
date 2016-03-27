@@ -16,7 +16,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7b572f7433a0ef11c525"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "cf8467ca8c34b9edb4de"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -771,7 +771,6 @@
 			"boilerplate",
 			"template",
 			"webpack",
-			"koa",
 			"transmit"
 		],
 		"main": "dist/server.js",
@@ -822,9 +821,6 @@
 			"isomorphic-fetch": "2.2.1",
 			"isomorphic-style-loader": "0.0.10",
 			"jquery": "^2.2.2",
-			"koa": "1.2.0",
-			"koa-proxy": "0.5.0",
-			"koa-static": "2.0.0",
 			"lastfm": "^0.9.2",
 			"less": "^2.6.1",
 			"less-loader": "^2.2.3",

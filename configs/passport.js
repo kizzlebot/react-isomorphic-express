@@ -8,6 +8,7 @@ var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 
+
 var User = require('../models/User');
 
 passport.serializeUser(function(user, done) {
