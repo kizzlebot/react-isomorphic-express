@@ -1,8 +1,10 @@
 var webpack = require("webpack");
 var config = require("./webpack.client.js");
+var pkg = require('../package.json');
+
 var wds = {
 	hostname: process.env.HOSTNAME || "localhost",
-	port: 8080
+	port: process.env.WEBPACK_PORT || 8080
 };
 
 config.cache   = true;
@@ -31,7 +33,7 @@ config.output.hotUpdateMainFilename  = "update/[hash]/update.json";
 config.output.hotUpdateChunkFilename = "update/[hash]/[id].update.js";
 
 config.plugins = [
-	new webpack.DefinePlugin({__CLIENT__: true, __SERVER__: false, __PRODUCTION__: false, __DEV__: true}),
+	new webpack.DefinePlugin({ __CLIENT__: true, __SERVER__: false, __PRODUCTION__: false, __DEV__: true, __PKG__:`"${pkg.name}"` }),
 	new webpack.HotModuleReplacementPlugin(),
 	new webpack.NoErrorsPlugin()
 ];

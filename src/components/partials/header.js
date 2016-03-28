@@ -32,7 +32,7 @@ var Header = React.createClass({
             <span className="icon-bar" />
             <span className="icon-bar" />
             <span className="icon-bar" />
-            </button><IndexLink to="/" activeClassName={'active'} className="navbar-brand"><i className="fa fa-rocket" />DevMusic</IndexLink>
+            </button><IndexLink to="/" activeClassName={'active'} className="navbar-brand"><i className="fa fa-rocket" />{__PKG__}</IndexLink>
           </div>
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">

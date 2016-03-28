@@ -6,6 +6,7 @@ var nodeExternals = require("webpack-node-externals");
 var path          = require("path");
 var fs            = require("fs");
 var dotenv = require('dotenv');
+var pkg = require('../package.json');
 
 
 dotenv.config({path:path.resolve('./.env')});
@@ -36,7 +37,7 @@ module.exports = {
 		filename:      "server.js"
 	},
 	plugins: [
-		new webpack.DefinePlugin({__CLIENT__: false, __SERVER__: true, __PRODUCTION__: true, __DEV__: false}),
+		new webpack.DefinePlugin({__CLIENT__: false, __SERVER__: true, __PRODUCTION__: true, __DEV__: false, __PKG__:`"${pkg.name}"`}),
 		new webpack.DefinePlugin(env)
 	],
 	module:  {
@@ -44,13 +45,13 @@ module.exports = {
 			{ test: /\.json$/, loaders: ["json"]},
 			{ test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/, loaders: ["file?context=static&name=/[path][name].[ext]"], exclude: /node_modules/},
 			{ test: /\.js$/, loaders: ["babel?presets[]=es2015&presets[]=stage-0&presets[]=react"], exclude: /node_modules/},
-      { test: /\.jade?$/,        exclude: /node_modules/,       loader: 'jade'},
-      { test: /\.woff(\?\S*)?$/,                               loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.woff2(\?\S*)?$/,                               loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.(ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,           loader: 'file-loader' },
-      { test: /\.less$/,                                        loader: "style!css!less"},
-      { test: /\.scss$/,                                        loaders: ['style', 'css', 'sass'] },
-      { test: /\.css$/,                                         loaders: ['style','css']}
+			{ test: /\.jade?$/,        exclude: /node_modules/,       loader: 'jade'},
+			{ test: /\.woff(\?\S*)?$/,                               loader: 'url?limit=10000&mimetype=application/font-woff' },
+			{ test: /\.woff2(\?\S*)?$/,                               loader: 'url?limit=10000&mimetype=application/font-woff' },
+			{ test: /\.(ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,           loader: 'file-loader' },
+			{ test: /\.less$/,                                        loader: "style!css!less"},
+			{ test: /\.scss$/,                                        loaders: ['style', 'css', 'sass'] },
+			{ test: /\.css$/,                                         loaders: ['style','css']}
 		],
 		postLoaders: [
 		],

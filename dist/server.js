@@ -16,7 +16,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ad00a583dc579b28fd5c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "5b11ee9453c26e867569"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -521,7 +521,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://localhost:8080/dist";
+/******/ 	__webpack_require__.p = "http://localhost:9000/dist";
 /******/
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -819,7 +819,7 @@
 			"build": "concurrently \"npm run build-server\" \"npm run build-client\"",
 			"watch-server": "webpack --watch --verbose --colors --display-error-details --config configs/webpack.server-watch.js",
 			"watch-server-start": "node node_modules/just-wait --pattern \"dist/*.js\" && npm run start",
-			"watch-client": "webpack-dev-server --config configs/webpack.client-watch.js",
+			"watch-client": "webpack-dev-server --config configs/webpack.client-watch.js --port=${WEBPACK_PORT:=\"8080\"}",
 			"watch": "concurrently --kill-others \"npm run watch-server-start\" \"npm run watch-server\" \"npm run watch-client\""
 		},
 		"dependencies": {
@@ -1229,7 +1229,7 @@
 	            _reactRouter.IndexLink,
 	            { to: '/', activeClassName: 'active', className: 'navbar-brand' },
 	            _react2.default.createElement('i', { className: 'fa fa-rocket' }),
-	            'DevMusic'
+	            ("react-isomorphic-express")
 	          )
 	        ),
 	        _react2.default.createElement(
