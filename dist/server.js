@@ -16,7 +16,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1319dfd583f1542f4a48"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ce591736cc15d731d465"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -648,7 +648,7 @@
 	// Configuration modules
 	var passportConfig = __webpack_require__(22);
 	var routes = __webpack_require__(32);
-	var middlewareConfig = __webpack_require__(45);
+	var middlewareConfig = __webpack_require__(35);
 	
 	// Environment Variables
 	var hostname = process.env.HOSTNAME || "localhost";
@@ -671,7 +671,7 @@
 	middlewareConfig(app, __dirname, function () {
 		app.use('/api/github', proxy(githubApi.url, {
 			forwardPath: function forwardPath(req, res) {
-				return __webpack_require__(59).parse(req.url).path;
+				return __webpack_require__(49).parse(req.url).path;
 			}
 		}));
 	
@@ -1780,39 +1780,29 @@
 	module.exports = require("react-inline-css");
 
 /***/ },
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	var pkg = __webpack_require__(6);
-	var cookieParser = __webpack_require__(46);
-	var compress = __webpack_require__(47);
-	var session = __webpack_require__(48);
-	var bodyParser = __webpack_require__(49);
-	var logger = __webpack_require__(50);
+	var cookieParser = __webpack_require__(36);
+	var compress = __webpack_require__(37);
+	var session = __webpack_require__(38);
+	var bodyParser = __webpack_require__(39);
+	var logger = __webpack_require__(40);
 	var errorHandler = __webpack_require__(10);
-	var lusca = __webpack_require__(51);
-	var methodOverride = __webpack_require__(52);
+	var lusca = __webpack_require__(41);
+	var methodOverride = __webpack_require__(42);
 	var dotenv = __webpack_require__(7);
-	var MongoStore = __webpack_require__(53)(session);
-	var flash = __webpack_require__(54);
-	var path = __webpack_require__(55);
+	var MongoStore = __webpack_require__(43)(session);
+	var flash = __webpack_require__(44);
+	var path = __webpack_require__(45);
 	var mongoose = __webpack_require__(9);
 	var passport = __webpack_require__(20);
-	var expressValidator = __webpack_require__(56);
-	var sass = __webpack_require__(57);
-	var multer = __webpack_require__(58);
+	var expressValidator = __webpack_require__(46);
+	var sass = __webpack_require__(47);
+	var multer = __webpack_require__(48);
 	var express = __webpack_require__(8);
 	
 	var passportConfig = __webpack_require__(22);
@@ -1865,85 +1855,85 @@
 	};
 
 /***/ },
-/* 46 */
+/* 36 */
 /***/ function(module, exports) {
 
 	module.exports = require("cookie-parser");
 
 /***/ },
-/* 47 */
+/* 37 */
 /***/ function(module, exports) {
 
 	module.exports = require("compression");
 
 /***/ },
-/* 48 */
+/* 38 */
 /***/ function(module, exports) {
 
 	module.exports = require("express-session");
 
 /***/ },
-/* 49 */
+/* 39 */
 /***/ function(module, exports) {
 
 	module.exports = require("body-parser");
 
 /***/ },
-/* 50 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = require("morgan");
 
 /***/ },
-/* 51 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = require("lusca");
 
 /***/ },
-/* 52 */
+/* 42 */
 /***/ function(module, exports) {
 
 	module.exports = require("method-override");
 
 /***/ },
-/* 53 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = require("connect-mongo/es5");
 
 /***/ },
-/* 54 */
+/* 44 */
 /***/ function(module, exports) {
 
 	module.exports = require("express-flash");
 
 /***/ },
-/* 55 */
+/* 45 */
 /***/ function(module, exports) {
 
 	module.exports = require("path");
 
 /***/ },
-/* 56 */
+/* 46 */
 /***/ function(module, exports) {
 
 	module.exports = require("express-validator");
 
 /***/ },
-/* 57 */
+/* 47 */
 /***/ function(module, exports) {
 
 	module.exports = require("node-sass-middleware");
 
 /***/ },
-/* 58 */
+/* 48 */
 /***/ function(module, exports) {
 
 	module.exports = require("multer");
 
 /***/ },
-/* 59 */
+/* 49 */
 /***/ function(module, exports) {
 
 	module.exports = require("url");
