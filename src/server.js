@@ -7,8 +7,10 @@ var pkg = require('../package.json');
 var dotenv = require('dotenv');
 var express = require('express');
 var mongoose = require('mongoose')
+
 var hostname = process.env.HOSTNAME || "localhost" ;
 var port     = process.env.PORT || 8000;
+var webpack_port     = process.env.WEBPACK_PORT || 8080;
 
 var errorHandler = require('errorhandler');
 var React =  require("react");
@@ -69,7 +71,7 @@ middlewareConfig(app, __dirname, () => {
    */
 
 	app.get('/', function(req, res, next){
-			var webserver = __PRODUCTION__ ? "" : `//${hostname}:8080`;
+			var webserver = __PRODUCTION__ ? "" : `//${hostname}:${webpack_port}`;
 			var location  = req.originalUrl;
 
 			ReactRouter.match({routes, location}, (error, redirectLocation, renderProps) => {
@@ -181,8 +183,8 @@ middlewareConfig(app, __dirname, () => {
 		if (module.hot) {
 			console.log("[HMR] Waiting for server-side updates");
 
-			module.hot.accept("containers/routes", () => {
-				routes = require("containers/routes");
+			module.hot.accept("components/routes", () => {
+				routes = require("components/routes");
 			});
 
 			module.hot.addStatusHandler((status) => {

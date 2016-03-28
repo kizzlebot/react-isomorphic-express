@@ -1,4 +1,5 @@
-# React Isomorphic Starterkit
+# React Isomorphic Express
+## Fork of [React isomorphic starterkit](https://github.com/RickWong/react-isomorphic-starterkit) that uses express.js
 
 Isomorphic starterkit with server-side React rendering using
 [npm](https://www.npmjs.com),
