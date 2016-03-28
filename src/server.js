@@ -8,34 +8,33 @@ var dotenv = require('dotenv');
 var express = require('express');
 var mongoose = require('mongoose')
 
-var hostname = process.env.HOSTNAME || "localhost" ;
-var port     = process.env.PORT || 8000;
-var webpack_port     = process.env.WEBPACK_PORT || 8080;
-
 var errorHandler = require('errorhandler');
 var React =  require("react");
 var ReactDOM = require("react-dom/server");
 var Transmit = require("react-transmit");
-
 var githubApi = require("apis/github");
-var routes = require("components/routes");
 var favicon = require("favicon.ico");
-
-var passportConfig = require('../configs/passport');
-
 var passport = require('passport');
+var proxy = require('express-http-proxy');
 
 
 
+// Configuration modules
+var passportConfig = require('../configs/passport');
+var routes = require("./containers/routes");
+var middlewareConfig = require('../configs/middleware.js');
 
 
+
+// Environment Variables
+const hostname = process.env.HOSTNAME || "localhost" ;
+const port     = process.env.PORT || 8000;
+const webpack_port     = process.env.WEBPACK_PORT || 8080;
 
 
 /* Load environment variables from .env file, where API keys and passwords are configured. */
 dotenv.load();
 
-
-/* API keys and Passport configuration. */
 
 /* Create Express server. */
 var app = express();
@@ -56,8 +55,6 @@ mongoose.connection.on('error', function() {
 
 
 
-var middlewareConfig = require('../configs/middleware.js');
-var proxy = require('express-http-proxy');
 
 
 middlewareConfig(app, __dirname, () => {
@@ -183,8 +180,8 @@ middlewareConfig(app, __dirname, () => {
 		if (module.hot) {
 			console.log("[HMR] Waiting for server-side updates");
 
-			module.hot.accept("components/routes", () => {
-				routes = require("components/routes");
+			module.hot.accept("containers/routes", () => {
+				routes = require("containers/routes");
 			});
 
 			module.hot.addStatusHandler((status) => {

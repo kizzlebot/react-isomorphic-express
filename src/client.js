@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import * as ReactRouter from "react-router";
 import Transmit from "react-transmit";
 
-import routesContainer from "components/routes";
+import routesContainer from "containers/routes";
 
 /**
  * Fire-up React Router.
@@ -16,7 +16,7 @@ Transmit.render(ReactRouter.Router, {routes: routesContainer, history: ReactRout
  */
 if (process.env.NODE_ENV !== "production") {
 	if (!reactRoot.firstChild || !reactRoot.firstChild.attributes ||
-	    !reactRoot.firstChild.attributes["data-react-checksum"]) {
+		!reactRoot.firstChild.attributes["data-react-checksum"]) {
 		console.error("Server-side React render was discarded. Make sure that your initial render does not contain any client-side code.");
 	}
 }
