@@ -7,3 +7,4 @@ dist/
 *.sublime-project
 *.sublime-workspace
 npm-debug.log
+.DS_Store
