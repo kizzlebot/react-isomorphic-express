@@ -9,7 +9,7 @@ var wds = {
 
 config.cache   = true;
 config.debug   = true;
-config.devtool = "cheap-module-eval-source-map";
+config.devtool = "source-map";
 
 config.entry.unshift(
   "webpack-dev-server/client?http://" + wds.hostname + ":" + wds.port,

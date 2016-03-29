@@ -1,33 +1,48 @@
 import babelPolyfill from "babel-polyfill";
 import * as ReactRouter from "react-router";
 
-
-
-var pkg = require('../package.json');
+/**
+ * Modules
+ */
 var dotenv = require('dotenv');
 var express = require('express');
 var mongoose = require('mongoose')
-
-var hostname = process.env.HOSTNAME || "localhost" ;
-var port     = process.env.PORT || 8000;
-var webpack_port     = process.env.WEBPACK_PORT || 8080;
 
 var errorHandler = require('errorhandler');
 var React =  require("react");
 var ReactDOM = require("react-dom/server");
 var Transmit = require("react-transmit");
 
-var githubApi = require("apis/github");
-var routes = require("components/routes");
+
+
 var favicon = require("favicon.ico");
-
-var passportConfig = require('../configs/passport');
-
 var passport = require('passport');
+var reactRouter = require('react-router');
+var proxy = require('express-http-proxy');
+
+
+
+/**
+ * Source filess
+ */
+var routes = require("components/routes");
+var pkg = require('../package.json');
+var passportConfig = require('../configs/passport');
+var githubApi = require("apis/github");
+var middlewareConfig = require('../configs/middleware.js');
 
 
 
 
+const style = require('!raw!sass!./components/style/main.scss');
+
+
+/**
+ * Environment Variables
+ */
+var hostname = process.env.HOSTNAME || "localhost";
+var port     = process.env.PORT || 8000;
+var webpack_port     = process.env.WEBPACK_PORT || 8080;
 
 
 
@@ -35,7 +50,6 @@ var passport = require('passport');
 dotenv.load();
 
 
-/* API keys and Passport configuration. */
 
 /* Create Express server. */
 var app = express();
@@ -43,7 +57,9 @@ var app = express();
 /* Connect to MongoDB. */
 mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
 mongoose.connection.on('error', function() {
-  console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
+  console.info('MongoDB Connection Error. Please make sure that MongoDB is running.');
+
+  // SIGTERM with error
   process.exit(1);
 });
 
@@ -56,57 +72,108 @@ mongoose.connection.on('error', function() {
 
 
 
-var middlewareConfig = require('../configs/middleware.js');
-var proxy = require('express-http-proxy');
+
 
 
 middlewareConfig(app, __dirname, () => {
+	app.set('env', (__PRODUCTION__) ? 'production' : 'development');
+
+
+
 	app.use('/api/github', proxy(githubApi.url, {
 	  forwardPath: (req, res) => require('url').parse(req.url).path
 	}));
 
 
-  /**
+
+
+
+
+
+
+
+	app.post('/login', (req, res, next) => {
+	  req.assert('email', 'Email is not valid').isEmail();
+	  req.assert('password', 'Password cannot be blank').notEmpty();
+
+	  var errors = req.validationErrors();
+	  if (errors) return res.json({msg:errors});
+
+
+
+	  // Authenticate
+	  passport.authenticate('local', (err, user, info) => {
+	    if (err) return next(err);
+
+	    // If user not found
+	    if (!user) return res.json({msg:info.message});
+
+	    req.logIn(user, (errr) => {
+	      if (errr) return next(err);
+	      res.sendStatus(200);
+	    });
+	  })(req, res, next);
+
+
+	});
+
+
+
+
+
+
+  /*
    * Controllers (route handlers).
    */
-
-	app.get('/', function(req, res, next){
-			var webserver = __PRODUCTION__ ? "" : `//${hostname}:${webpack_port}`;
-			var location  = req.originalUrl;
-
-			ReactRouter.match({routes, location}, (error, redirectLocation, renderProps) => {
-				if (redirectLocation) return res.redirect(redirectLocation.pathname + redirectLocation.search, "/");
-				if (error || !renderProps) return next(error);
-
-
-				Transmit.renderToString(ReactRouter.RouterContext, renderProps).then(	({reactString, reactData}) => {
-					var template = (
-						`<!doctype html>
-						 <html lang="en-us">
-							<head>
-								<meta charset="utf-8" />
-								<title>react-isomorphic-starterkit</title>
-								<link rel="shortcut icon" href="${favicon}" />
-							</head>
-							<body>
-								<div id="react-root">${reactString}</div>
-							</body>
-						 </html>`
-					);
+	app.use(function(req, res, next){
+		var webserver = __PRODUCTION__ ? "" : `//${hostname}:${webpack_port}`;
+		var location  = req.path;
 
 
 
-					var body = Transmit.injectIntoMarkup(template, reactData, [`${webserver}/dist/client.js`]);
+		ReactRouter.match({routes, location}, (error, redirectLocation, renderProps) => {
+			if (redirectLocation) {
+				console.error('redirectLocation hit');
 
-					// Set content-type to HTML and send the prerendered HTML back
-					res.set('Content-Type', 'text/html');
-					res.end(body);
+				return res.redirect(redirectLocation.pathname + redirectLocation.search);
+			}
 
-				})
-				.catch(e => {
-					next(e);
-				});
+
+			if (error || !renderProps) {
+				console.error(`if (error || !renderProps)`);
+				return next(error);
+			}
+
+
+			Transmit.renderToString(ReactRouter.RouterContext, renderProps).then(	({reactString, reactData}) => {
+
+				var template = (
+					`<!doctype html>
+					 <html lang="en-us">
+						<head>
+							<meta charset="utf-8" />
+							<title>react-isomorphic-starterkit</title>
+							<link rel="shortcut icon" href="${favicon}" />
+							<style>${style}</style>
+						</head>
+						<body>
+							<div id="react-root">${reactString}</div>
+						</body>
+					 </html>`
+				);
+
+
+
+				var body = Transmit.injectIntoMarkup(template, reactData, [`${webserver}/dist/client.js`]);
+
+				// Set content-type to HTML and send the prerendered HTML back
+				res.set('Content-Type', 'text/html');
+				res.end(body);
+			})
+			.catch(e => {
+				next(e);
 			});
+		});
 	});
 
 
@@ -175,7 +242,6 @@ middlewareConfig(app, __dirname, () => {
 	app.listen(app.get('port'), function() {
 	  console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 	});
-
 
 
 

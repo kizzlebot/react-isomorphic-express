@@ -1,12 +1,21 @@
 import { createStore } from 'redux';
-var $ = require('jquery');
+import {LOG_IN, LOG_OUT, SIGN_UP, GET_PROFILE} from './actionTypes';
 
 
 
-const LOG_IN = 'LOG_IN';
-const LOG_OUT = 'LOG_OUT';
-const SIGN_UP = 'SIGN_UP';
-const GET_PROFILE = 'GET_PROFILE';
+
+/**
+ *---------------------------------------------------
+ * Store
+ *---------------------------------------------------
+ * - Holds application state;
+ * - Allows access to state via getState();
+ * - Allows state to be updated via dispatch(action);
+ * - Registers listeners via subscribe(listener);
+ * - Handles unregistering of listeners via the function returned by subscribe(listener).
+ */
+
+
 
 
 
@@ -25,18 +34,18 @@ const GET_PROFILE = 'GET_PROFILE';
  * project.
  */
 
-function auth(state = {}, action) {
+function auth(state = {csrf:null}, action) {
   switch (action.type) {
-  case LOG_IN:
-    return {...state, logged_in:true}
-  case LOG_OUT:
-    return {...state, logged_in:false}
-  case SIGN_UP:
-  	return state
-  case GET_PROFILE:
-  	return state;
-  default:
-    return state
+    case LOG_IN:
+      return {...state, logged_in:true}
+    case LOG_OUT:
+      return {...state, logged_in:false}
+    case SIGN_UP:
+      return state
+    case GET_PROFILE:
+      return state;
+    default:
+      return state
   }
 }
 
@@ -47,82 +56,10 @@ function auth(state = {}, action) {
 
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
-
-export const userStore = createStore(auth);
-
-
-
-
-/**
- * Action Creators
- */
-function log_in(){
-	return {
-		type: LOG_IN
-	}
-}
-function signup(){
-	return {
-		type: SIGN_UP
-	}
-}
+export default createStore(auth);
 
 
 
 
 
 
-
-
-export function submitLogin(form){
-	return $.ajax({
-		url:'/login',
-		data:{
-			email:form.email.value,
-			password:form.password.value,
-			_csrf:form._csrf.value
-		},
-		method:'POST'
-	})
-	.then((xData, status, xhr) => {
-		console.log(xhr.getAllResponseHeaders());
-		userStore.dispatch(log_in());
-		return Promise.resolve(xData, status, xhr);
-	});
-}
-export function submitSignup(form){
-	return $.ajax({
-		url:'/signup',
-		data:{
-			email:form.email.value,
-			password:form.password.value,
-			confirmPassword:form.confirmPassword.value,
-			_csrf:form._csrf.value
-		},
-		method:'POST'
-	})
-	.then((xData, status, xhr) => {
-		console.log(xhr.getAllResponseHeaders());
-		userStore.dispatch(log_in());
-		return Promise.resolve(xData, status, xhr);
-	});
-}
-
-
-
-
-// You can subscribe to the updates manually, or use bindings to your view layer.
-// store.subscribe(() =>
-//   console.log(store.getState())
-// )
-
-
-
-
-// // The only way to mutate the internal state is to dispatch an action.
-// // The actions can be serialized, logged or stored and later replayed.
-// store.dispatch({ type: 'INCREMENT' })
-// // 1
-// store.dispatch({ type: 'INCREMENT' })
-// // 2
-// store.dispatch({ type: 'DECREMENT' })

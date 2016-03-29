@@ -8,7 +8,17 @@
     "url": "https://github.com/RickWong/react-isomorphic-starterkit.git"
   },
   "homepage": "https://github.com/RickWong/react-isomorphic-starterkit",
-  "keywords": [ "react", "isomorphic", "expressjs", "universal", "starter", "boilerplate", "template", "webpack", "transmit" ],
+  "keywords": [
+    "react",
+    "isomorphic",
+    "expressjs",
+    "universal",
+    "starter",
+    "boilerplate",
+    "template",
+    "webpack",
+    "transmit"
+  ],
   "main": "dist/server.js",
   "scripts": {
     "start": "forever --minUptime 1000 --spinSleepTime 1000 -c \"node --harmony\" ./dist/server.js",
@@ -33,6 +43,7 @@
     "connect-assets": "^5.1.0",
     "connect-mongo": "^1.1.0",
     "cookie-parser": "^1.4.1",
+    "csurf": "^1.8.3",
     "dotenv": "^2.0.0",
     "errorhandler": "^1.4.3",
     "express": "^4.13.4",
@@ -81,6 +92,7 @@
     "react-dom": "0.14.7",
     "react-inline-css": "2.1.0",
     "react-router": "2.0.0",
+    "react-router-bootstrap": "^0.20.1",
     "react-transmit": "3.1.7",
     "redux": "^3.3.1",
     "request": "^2.69.0",

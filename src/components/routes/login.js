@@ -1,7 +1,8 @@
 import React from 'react'
 var $ = require('jquery');
-import {submitLogin, userStore} from '../redux/userStore';
 
+import * as actions from '../redux/boundActions';
+import userStore from '../redux/userStore';
 
 
 
@@ -23,7 +24,7 @@ var Login = React.createClass({
   },
   onSubmit(evt){
     evt.preventDefault();
-    submitLogin(this.refs.form);
+    actions.submitLogin(this.refs.form);
   },
   render() {
     return (
@@ -32,7 +33,6 @@ var Login = React.createClass({
           <h3>Sign in</h3>
         </div>
         <form ref={'form'} onSubmit={this.onSubmit} className="form-horizontal">
-          <input type="hidden" name="_csrf" value={$('#csrf').attr('value')}/>
           <div className="form-group">
             <label htmlFor="email" className="col-sm-3 control-label">Email</label>
             <div className="col-sm-7">

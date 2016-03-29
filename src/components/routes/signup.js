@@ -1,5 +1,8 @@
 import React from 'react'
-import {submitSignup, userStore} from '../redux/userStore';
+import * as actions from '../redux/actionCreators';
+import userStore from '../redux/userStore';
+
+
 
 var SignUp = React.createClass({
   contextTypes: {
@@ -18,7 +21,7 @@ var SignUp = React.createClass({
   },
   onSubmit(evt){
     evt.preventDefault();
-    submitSignup(this.refs.form)
+    actions.submitSignup(this.refs.form)
   },
   render() {
     return (
@@ -27,7 +30,7 @@ var SignUp = React.createClass({
           <h3>Sign up</h3>
         </div>
         <form ref='form' id="signup-form" onSubmit={this.onSubmit} className="form-horizontal">
-          <input type="hidden" name="_csrf" value={$('#csrf').attr('value')}/>
+          <input type="hidden" id='csrf' name="_csrf" />
           <div className="form-group">
             <label htmlFor="email" className="col-sm-3 control-label">Email</label>
             <div className="col-sm-7">

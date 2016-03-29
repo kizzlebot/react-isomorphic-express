@@ -17,6 +17,7 @@ var expressValidator = require('express-validator');
 var sass = require('node-sass-middleware');
 var multer = require('multer');
 var express = require('express');
+var csrf = require('csurf');
 
 var passportConfig = require('./passport');
 
@@ -28,33 +29,67 @@ module.exports = (app, dir, cb) => {
   app.set('port', process.env.PORT || 8000);
   app.set('views', path.join("./", 'containers'));
   app.set('view engine', 'jade');
+
+
   app.use(compress());
   app.use(sass({
     src: path.join(dir, 'public'),
     dest: path.join(dir, 'public'),
     sourceMap: true
   }));
+
+
   app.use(logger('dev'));
+
+  // Body parser
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
+
+  // Add validation methods to req
   app.use(expressValidator());
+
+
+	var sessionOpts = {
+	  resave: true,
+	  saveUninitialized: true,
+	  secret: process.env.SESSION_SECRET,
+	  store: new MongoStore({
+	    url: process.env.MONGODB || process.env.MONGOLAB_URI,
+	    autoReconnect: true
+	  }),
+	  cookie:{}
+	};
+
+
+
+	if (app.get('env') == 'production'){
+	  sessionOpts.cookie.secure = true // serve secure cookies
+	}
+
+
+
   app.use(methodOverride());
   app.use(cookieParser());
-  app.use(session({
-    resave: true,
-    saveUninitialized: true,
-    secret: process.env.SESSION_SECRET,
-    store: new MongoStore({
-      url: process.env.MONGODB || process.env.MONGOLAB_URI,
-      autoReconnect: true
-    })
-  }));
+  app.use(session(sessionOpts));
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(flash());
-  app.use((req, res, next) => (req.path === '/api/upload') ? next() : lusca.csrf()(req, res, next));
-  app.use(lusca.xframe('SAMEORIGIN'));
-  app.use(lusca.xssProtection(true));
+	app.use(csrf());
+	app.use(function (req, res, next) {
+		res.cookie('XSRF-TOKEN', req.csrfToken());
+		res.locals.csrftoken = req.csrfToken();
+		next();
+	});
+
+  // app.use((req, res, next) => (req.path === '/api/upload') ? next() : lusca.csrf()(req, res, next));
+  // app.use(lusca({
+  // 	xframe:'SAMEORIGIN',
+  // 	xssProtection:true
+  // }));
+  // app.use(lusca.xssProtection(true));
+  //
+  //
+
   app.use((req, res, next) => {
     res.locals.user = req.user;
     res.locals.appName = pkg.name;
