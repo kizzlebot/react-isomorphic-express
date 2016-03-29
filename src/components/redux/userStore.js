@@ -57,9 +57,3 @@ function auth(state = {csrf:null}, action) {
 // Create a Redux store holding the state of your app.
 // Its API is { subscribe, dispatch, getState }.
 export default createStore(auth);
-
-
-
-
-
-

@@ -68,10 +68,10 @@ module.exports = (app, dir, cb) => {
 
 	// app.use(csrf());
 
-  app.use((req, res, next) => (req.path === '/api/upload') ? next() : lusca.csrf()(req, res, next));
+  // app.use((req, res, next) => (req.path === '/api/upload') ? next() : lusca.csrf()(req, res, next));
   app.use(lusca({
   	xframe:'SAMEORIGIN',
-  	xssProtection:true
+  	xssProtection:false
   }));
   // app.use(lusca.xssProtection(true));
 

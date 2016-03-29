@@ -31,4 +31,4 @@ function get_profile(){
 
 
 
-export {log_in, log_out, sign_up, get_profile}
+export {log_in, log_out, sign_up, get_profile};
