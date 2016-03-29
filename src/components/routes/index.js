@@ -47,21 +47,45 @@ import {userStore} from '../redux/userStore';
 // }
 
 
-module.exports = (
-	<Router>
-		<Route path="/" component={App} store={userStore}>
-			<IndexRoute component={Home}/>
+module.exports = (history) => {
+	if (history){
+		return (
+			<Router history={history}>
+				<Route path="/" component={App} store={userStore}>
+					<IndexRoute component={Home}/>
 
-			<Route path='api' component={APIs}>
-				<Route path='github' component={GithubAPI}/>
-				<Route path='linkedin' component={LinkedIn}/>
-				<Route path='stargazers' component={Stargazers}/>
-			</Route>
+					<Route path='api' component={APIs}>
+						<Route path='github' component={GithubAPI}/>
+						<Route path='linkedin' component={LinkedIn}/>
+						<Route path='stargazers' component={Stargazers}/>
+					</Route>
 
 
-			<Route path="contact" component={Contact} />
-			<Route path="login" component={Login} />
-			<Route path="signup" component={SignUp} />
-		</Route>
-	</Router>
-);
+					<Route path="contact" component={Contact} />
+					<Route path="login" component={Login} />
+					<Route path="signup" component={SignUp} />
+				</Route>
+			</Router>
+		)
+	}
+	else {
+		return (
+			<Router>
+				<Route path="/" component={App} store={userStore}>
+					<IndexRoute component={Home}/>
+
+					<Route path='api' component={APIs}>
+						<Route path='github' component={GithubAPI}/>
+						<Route path='linkedin' component={LinkedIn}/>
+						<Route path='stargazers' component={Stargazers}/>
+					</Route>
+
+
+					<Route path="contact" component={Contact} />
+					<Route path="login" component={Login} />
+					<Route path="signup" component={SignUp} />
+				</Route>
+			</Router>
+		)
+	}
+};

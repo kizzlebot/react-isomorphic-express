@@ -26,7 +26,6 @@ var passportConfig = require('./passport');
 
 
 module.exports = (app, dir, cb) => {
-  app.set('port', process.env.PORT || 8000);
   app.set('views', path.join("./", 'containers'));
   app.set('view engine', 'jade');
 
@@ -77,18 +76,19 @@ module.exports = (app, dir, cb) => {
   // app.use(lusca.xssProtection(true));
 
 
-  app.use((req, res, next) => {
-    res.locals.user = req.user;
-    res.locals.appName = pkg.name;
-    res.locals.csrftoken = req.csrfToken();
-    res.cookie('XSRF-TOKEN', res.locals._csrf);
-    next();
-  });
+
 
   app.use((req, res, next) => {
+  	res.locals.user = req.user;
+    res.locals.appName = pkg.name;
+    res.locals.csrftoken = res.locals._csrf;
+    res.cookie('XSRF-TOKEN', res.locals._csrf);
+
     if (/api/i.test(req.path)) req.session.returnTo = req.path;
     next();
   });
+
+
 
   app.use(express.static(path.join(dir, 'static'), { maxAge: 31557600000 }));
   if (cb) cb(app);

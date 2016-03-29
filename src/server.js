@@ -25,11 +25,15 @@ var proxy = require('express-http-proxy');
 /**
  * Source filess
  */
-var routes = require("components/routes");
+import { createMemoryHistory, useQueries } from 'history';
+
+
+var createRoutes = require("components/routes");
 var pkg = require('../package.json');
 var passportConfig = require('../configs/passport');
 var githubApi = require("apis/github");
 var middlewareConfig = require('../configs/middleware.js');
+
 
 
 
@@ -137,6 +141,8 @@ middlewareConfig(app, __dirname, () => {
 		var webserver = __PRODUCTION__ ? "" : `//${hostname}:${webpack_port}`;
 		var location  = req.path;
 
+		var history = useQueries(createMemoryHistory)();
+		var routes = createRoutes(history);
 
 
 		ReactRouter.match({routes, location}, (error, redirectLocation, renderProps) => {
@@ -152,8 +158,8 @@ middlewareConfig(app, __dirname, () => {
 				return next(error);
 			}
 
-
-			Transmit.renderToString(ReactRouter.RouterContext, renderProps).then(	({reactString, reactData}) => {
+			console.log(renderProps);
+			Transmit.renderToString(ReactRouter.RouterContext, {...renderProps, csrf:res.locals._csrf}).then(	({reactString, reactData}) => {
 
 				var template = (
 					`<!doctype html>
@@ -165,16 +171,13 @@ middlewareConfig(app, __dirname, () => {
 							<style>${style}</style>
 						</head>
 						<body>
-							<div id="react-root">
-								${reactString}
-							</div>
+							<div id="react-root">${reactString}</div>
 						</body>
 					 </html>`
 				);
 
-
-
-				var body = Transmit.injectIntoMarkup(template, reactData, [`${webserver}/dist/client.js`]);
+				console.log(reactData);
+				var body = Transmit.injectIntoMarkup(template, {...reactData, csrf:res.locals._csrf}, [`${webserver}/dist/client.js`]);
 
 				// Set content-type to HTML and send the prerendered HTML back
 				res.set('Content-Type', 'text/html');

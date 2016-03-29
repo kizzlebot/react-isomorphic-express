@@ -17,7 +17,13 @@ var $ = require('jquery');
 
 
 
-
+var csrf = null;
+if (__CLIENT__){
+	csrf = document.cookie.split('=');
+	if (csrf.length > 1){
+		csrf = csrf[1];
+	}
+}
 
 
 

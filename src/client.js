@@ -2,14 +2,19 @@ import React from "react";
 import ReactDOM from "react-dom";
 import * as ReactRouter from "react-router";
 import Transmit from "react-transmit";
+import createRoutes from "components/routes";
+import createBrowserHistory from 'history/lib/createBrowserHistory';
 
-import routesContainer from "components/routes";
+
 
 /**
  * Fire-up React Router.
  */
+const history = createBrowserHistory();
+
+
 const reactRoot = window.document.getElementById("react-root");
-Transmit.render(ReactRouter.Router, {routes: routesContainer, history: ReactRouter.browserHistory}, reactRoot);
+Transmit.render(ReactRouter.Router, {routes: createRoutes(history), history: ReactRouter.browserHistory}, reactRoot);
 
 /**
  * Detect whether the server-side render has been discarded due to an invalid checksum.

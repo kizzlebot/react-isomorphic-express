@@ -33,6 +33,7 @@ export default React.createClass({
   render(){
   	var {children, ...rest} = this.props;
 
+  	console.log(Object.keys(this.props));
     return (
       <div>
         <Header ref={'header'} />
