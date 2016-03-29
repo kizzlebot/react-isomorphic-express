@@ -31,8 +31,6 @@ if (__CLIENT__){
 /**
  * Create bound action creator that automatically dispatches:
  */
-
-
 const submitLogin = (form) => {
 	return $.ajax({
 		url:'/login',
