@@ -1,3 +1,15 @@
+import React from "react";
+
+import Transmit from "react-transmit";
+import githubApi from "apis/github";
+
+
+
+
+
+
+
+
 const fetchStargazers  = (page, per_page = 100) => {
 	return githubApi.browse(
 		["repos", "RickWong/react-isomorphic-starterkit", "stargazers"],
@@ -12,7 +24,7 @@ const fetchStargazers  = (page, per_page = 100) => {
 /**
  * App React application entry-point for both the server and client.
  */
-class App extends React.Component {
+class Stargazers extends React.Component {
 	/**
 	 * componentWillMount() runs on server and client.
 	 */
@@ -80,7 +92,7 @@ class App extends React.Component {
 
 
 
-App.propTypes = {
+Stargazers.propTypes = {
 	additionalStargazers:React.PropTypes.array,
 	stargazers:React.PropTypes.array
 }
@@ -97,7 +109,7 @@ App.propTypes = {
  * Use Transmit to query and return GitHub stargazers as a Promise.
  * Adds to given react component
  */
-export default Transmit.createContainer(App, {
+export default Transmit.createContainer(Stargazers, {
 	initialVariables: {
 		nextPage:       2,
 		pagesToFetch:   15,

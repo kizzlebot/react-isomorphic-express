@@ -1,10 +1,10 @@
-import { connect } from 'redux'
+// import { connect } from 'redux'
 import {userStore} from './userStore';
 import {log_in, sign_up} from './actionCreators';
 
 
 var $ = require('jquery');
-var csrf = null;
+
 
 
 

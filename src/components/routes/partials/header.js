@@ -39,30 +39,28 @@ var Header = React.createClass({
 		  <Navbar inverse>
 		    <Navbar.Header>
 		      <Navbar.Brand>
-		        <a href="#">React-Bootstrap</a>
+		        <IndexLink to="/" activeClassName={'active'} className="navbar-brand"><i className="fa fa-rocket" />{__PKG__}</IndexLink>
 		      </Navbar.Brand>
 		      <Navbar.Toggle />
 		    </Navbar.Header>
 		    <Navbar.Collapse>
 		      <Nav>
-		        <LinkContainer to={{pathname:'/'}}>
-		        	<NavItem eventKey={1}>Home</NavItem>
-	        	</LinkContainer>
-		      	<LinkContainer to={{pathname:'/contact'}}>
-		      		<NavItem eventKey={2} href="#">Contact</NavItem>
-	      		</LinkContainer>
+		        <LinkContainer to={{pathname:'/'}}><NavItem eventKey={1}>Home</NavItem></LinkContainer>
 
-		        <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-		          <MenuItem eventKey={3.1}>Action</MenuItem>
-		          <MenuItem eventKey={3.2}>Another action</MenuItem>
-		          <MenuItem eventKey={3.3}>Something else here</MenuItem>
-		          <MenuItem divider />
-		          <MenuItem eventKey={3.3}>Separated link</MenuItem>
+
+						<NavDropdown eventKey={2} title="APIs" id="basic-nav-dropdown">
+		          <LinkContainer to={{pathname:'/api/github'}}><NavItem eventKey={2.1} href="#">Github</NavItem></LinkContainer>
+		          <LinkContainer to={{pathname:'/api/linkedin'}}><NavItem eventKey={2.2} href="#">Linkedin</NavItem></LinkContainer>
+		          <LinkContainer to={{pathname:'/api/stargazers'}}><NavItem eventKey={2.3} href="#">Stargazers</NavItem></LinkContainer>
 		        </NavDropdown>
+
+
+		      	<LinkContainer to={{pathname:'/contact'}}><NavItem eventKey={3} href="#">Contact</NavItem></LinkContainer>
+
 		      </Nav>
 
-		      {navRight}
 
+		      {navRight}
 		    </Navbar.Collapse>
 		  </Navbar>
     );
@@ -81,7 +79,8 @@ export default Header;
 //             <span className="icon-bar" />
 //             <span className="icon-bar" />
 //             <span className="icon-bar" />
-//             </button><IndexLink to="/" activeClassName={'active'} className="navbar-brand"><i className="fa fa-rocket" />{__PKG__}</IndexLink>
+//             </button>
+//             <IndexLink to="/" activeClassName={'active'} className="navbar-brand"><i className="fa fa-rocket" />{__PKG__}</IndexLink>
 //           </div>
 //           <div className="collapse navbar-collapse">
 //             <ul className="nav navbar-nav">

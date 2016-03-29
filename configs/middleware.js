@@ -56,17 +56,8 @@ module.exports = (app, dir, cb) => {
 	  store: new MongoStore({
 	    url: process.env.MONGODB || process.env.MONGOLAB_URI,
 	    autoReconnect: true
-	  }),
-	  cookie:{}
+	  })
 	};
-
-
-
-	if (app.get('env') == 'production'){
-	  sessionOpts.cookie.secure = true // serve secure cookies
-	}
-
-
 
   app.use(methodOverride());
   app.use(cookieParser());
@@ -74,27 +65,26 @@ module.exports = (app, dir, cb) => {
   app.use(passport.initialize());
   app.use(passport.session());
   app.use(flash());
-	app.use(csrf());
-	app.use(function (req, res, next) {
-		res.cookie('XSRF-TOKEN', req.csrfToken());
-		res.locals.csrftoken = req.csrfToken();
-		next();
-	});
 
-  // app.use((req, res, next) => (req.path === '/api/upload') ? next() : lusca.csrf()(req, res, next));
-  // app.use(lusca({
-  // 	xframe:'SAMEORIGIN',
-  // 	xssProtection:true
-  // }));
+
+	// app.use(csrf());
+
+  app.use((req, res, next) => (req.path === '/api/upload') ? next() : lusca.csrf()(req, res, next));
+  app.use(lusca({
+  	xframe:'SAMEORIGIN',
+  	xssProtection:true
+  }));
   // app.use(lusca.xssProtection(true));
-  //
-  //
+
 
   app.use((req, res, next) => {
     res.locals.user = req.user;
     res.locals.appName = pkg.name;
+    res.locals.csrftoken = req.csrfToken();
+    res.cookie('XSRF-TOKEN', res.locals._csrf);
     next();
   });
+
   app.use((req, res, next) => {
     if (/api/i.test(req.path)) req.session.returnTo = req.path;
     next();

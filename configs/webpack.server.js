@@ -12,18 +12,33 @@ var pkg = require('../package.json');
 dotenv.config({path:path.resolve('./.env')});
 
 var env = {
-  "process.env": {
-    NODE_ENV: '"production"',
-    FACEBOOK_ID:`"${process.env.FACEBOOK_ID}"`,
-    FACEBOOK_SECRET:`"${process.env.FACEBOOK_SECRET}"`,
-    GOOGLE_ID:`"${process.env.GOOGLE_ID}"`,
-    GOOGLE_SECRET:`"${process.env.GOOGLE_SECRET}"`,
-    GITHUB_ID:`"${process.env.GITHUB_ID}"`,
-    GITHUB_SECRET:`"${process.env.GITHUB_SECRET}"`,
-    INSTAGRAM_ID:`"${process.env.INSTAGRAM_ID}"`,
-    INSTAGRAM_SECRET:`"${process.env.INSTAGRAM_SECRET}"`
-  }
+  // "process.env": {
+  //   NODE_ENV: '"production"',
+  //   FACEBOOK_ID:`"${process.env.FACEBOOK_ID}"`,
+  //   FACEBOOK_SECRET:`"${process.env.FACEBOOK_SECRET}"`,
+  //   GOOGLE_ID:`"${process.env.GOOGLE_ID}"`,
+  //   GOOGLE_SECRET:`"${process.env.GOOGLE_SECRET}"`,
+  //   GITHUB_ID:`"${process.env.GITHUB_ID}"`,
+  //   GITHUB_SECRET:`"${process.env.GITHUB_SECRET}"`,
+  //   INSTAGRAM_ID:`"${process.env.INSTAGRAM_ID}"`,
+  //   INSTAGRAM_SECRET:`"${process.env.INSTAGRAM_SECRET}"`,
+  //   MONGOLAB_URI:`"${process.env.MONGOLAB_URI}"`,
+  //   MONGODB:`"${process.env.MONGODB}"`
+  // }
 };
+
+
+fs.readFile(path.resolve('./.env'), function(err, data){
+	env['process.env'] = dotenv.parse(data);
+	console.log(env);
+})
+// env['process.env'] = Object.keys(process.env).reduce((prev, curr) => {
+// 	prev[curr] = `"${process.env[curr]}"`;
+// 	return prev ;
+// }, {});
+
+
+
 
 module.exports = {
   target:  "node",
@@ -42,11 +57,11 @@ module.exports = {
   ],
   module:  {
     loaders: [
-      { test: /\.json$/, loaders: ["json"]},
-      { test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/, loaders: ["file?context=static&name=/[path][name].[ext]"], exclude: /node_modules/},
-      { test: /\.js$/, loaders: ["babel?presets[]=es2015&presets[]=stage-0&presets[]=react"], exclude: /node_modules/},
-      { test: /\.jade?$/,        exclude: /node_modules/,       loader: 'jade'},
-      { test: /\.woff(\?\S*)?$/,                               loader: 'url?limit=10000&mimetype=application/font-woff' },
+      { test: /\.json$/, 																				loaders: ["json"]},
+      { test: /\.(ico|gif|png|jpg|jpeg|svg|webp)$/, 						loaders: ["file?context=static&name=/[path][name].[ext]"], exclude: /node_modules/},
+      { test: /\.js$/, 																					loaders: ["babel?presets[]=es2015&presets[]=stage-0&presets[]=react"], exclude: /node_modules/},
+      { test: /\.jade?$/,              													loader: 'jade', exclude: /node_modules/},
+      { test: /\.woff(\?\S*)?$/,                               	loader: 'url?limit=10000&mimetype=application/font-woff' },
       { test: /\.woff2(\?\S*)?$/,                               loader: 'url?limit=10000&mimetype=application/font-woff' },
       { test: /\.(ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,           loader: 'file-loader' },
       { test: /\.scss$/,                                        loaders: ['raw', 'css', 'sass'] }

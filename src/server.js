@@ -36,6 +36,15 @@ var middlewareConfig = require('../configs/middleware.js');
 
 const style = require('!raw!sass!./components/style/main.scss');
 
+/* Create Express server. */
+var app = express();
+
+
+
+
+
+/* Load environment variables from .env file, where API keys and passwords are configured. */
+dotenv.load();
 
 /**
  * Environment Variables
@@ -44,15 +53,15 @@ var hostname = process.env.HOSTNAME || "localhost";
 var port     = process.env.PORT || 8000;
 var webpack_port     = process.env.WEBPACK_PORT || 8080;
 
+app.set('hostname', hostname);
+app.set('port', port);
+app.set('webpack_port', webpack_port);
+app.set('env', (__PRODUCTION__) ? 'production' : 'development');
+app.set('secret', process.env.SESSION_SECRET);
 
 
-/* Load environment variables from .env file, where API keys and passwords are configured. */
-dotenv.load();
 
 
-
-/* Create Express server. */
-var app = express();
 
 /* Connect to MongoDB. */
 mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
@@ -76,7 +85,6 @@ mongoose.connection.on('error', function() {
 
 
 middlewareConfig(app, __dirname, () => {
-	app.set('env', (__PRODUCTION__) ? 'production' : 'development');
 
 
 
@@ -152,12 +160,14 @@ middlewareConfig(app, __dirname, () => {
 					 <html lang="en-us">
 						<head>
 							<meta charset="utf-8" />
-							<title>react-isomorphic-starterkit</title>
+							<title>${pkg.name}</title>
 							<link rel="shortcut icon" href="${favicon}" />
 							<style>${style}</style>
 						</head>
 						<body>
-							<div id="react-root">${reactString}</div>
+							<div id="react-root">
+								${reactString}
+							</div>
 						</body>
 					 </html>`
 				);
