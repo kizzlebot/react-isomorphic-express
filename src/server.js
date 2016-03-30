@@ -1,5 +1,9 @@
 import babelPolyfill from "babel-polyfill";
 import * as ReactRouter from "react-router";
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+
+
 
 /**
  * Modules
@@ -26,32 +30,34 @@ var proxy = require('express-http-proxy');
  * Source filess
  */
 import { createMemoryHistory, useQueries } from 'history';
-
-
 var createRoutes = require("components/routes");
 var pkg = require('../package.json');
 var passportConfig = require('../configs/passport');
 var githubApi = require("apis/github");
 var middlewareConfig = require('../configs/middleware.js');
-
-
-
-
-
 const style = require('!raw!sass!./components/style/main.scss');
+
+
+/* Load environment variables from .env file, where API keys and passwords are configured. */
+dotenv.load();
+
+
+
+
+
+
+
+
+
+
 
 /* Create Express server. */
 var app = express();
 
 
 
-
-
-/* Load environment variables from .env file, where API keys and passwords are configured. */
-dotenv.load();
-
 /**
- * Environment Variables
+ * Set Environment Variables
  */
 var hostname = process.env.HOSTNAME || "localhost";
 var port     = process.env.PORT || 8000;
@@ -71,7 +77,6 @@ app.set('secret', process.env.SESSION_SECRET);
 mongoose.connect(process.env.MONGODB || process.env.MONGOLAB_URI);
 mongoose.connection.on('error', function() {
   console.info('MongoDB Connection Error. Please make sure that MongoDB is running.');
-
   // SIGTERM with error
   process.exit(1);
 });
@@ -115,6 +120,7 @@ middlewareConfig(app, __dirname, () => {
 
 	  // Authenticate
 	  passport.authenticate('local', (err, user, info) => {
+
 	    if (err) return next(err);
 
 	    // If user not found
@@ -125,7 +131,6 @@ middlewareConfig(app, __dirname, () => {
 	      res.sendStatus(200);
 	    });
 	  })(req, res, next);
-
 
 	});
 
